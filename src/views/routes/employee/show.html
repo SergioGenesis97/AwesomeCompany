@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+
+    <!-- Style Files -->
+    <%-include('../partials/head.html') %>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%-include('../partials/navigation.html') %>
+    <br>
+    <div class="container">
+        <div class="card border-primary mb-12">
+            <div class="card-header">
+                <h3 class="text-center">Employees List</h3>
+                <a href="/employee/create" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Add Employee"><i class="fas fa-plus text-dark"></i></i></a>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Marital Status</th>
+                        <th scope="col"><i class="far fa-edit"></i></th>
+                        <th scope="col"><i class="fas fa-ban"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let j = 0; j < data.recordset.length; j++) {%>
+                            <tr>
+                                <td>
+                                    <%= data.recordset[j].id_employee %>
+                                </td>
+                                <td>
+                                    <%= data.recordset[j].full_name %>
+                                </td>
+                                <td>
+                                    <%= data.recordset[j].date_birth.toDateString() %>
+                                </td>
+                                <td>
+                                    <%= data.recordset[j].telephone %>
+                                </td>
+                                <td>
+                                    <%= data.recordset[j].email %>
+                                </td>
+                                <td>
+                                    <%= data.recordset[j].salary %>
+                                </td>
+                                <td>
+                                    <%= data.recordset[j].marital_status %>
+                                </td>
+                                <td>
+                                    <a href="/employee/edit" class="btn" data-toggle="tooltip" 
+                                        data-placement="top" title="Edit">
+                                        <i class="fas fa-user-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Employee/<%= data.recordset[j].id_employee %>"
+                                        class="btn" data-toggle="tooltip"
+                                        data-placement="top" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                                
+                        <% } %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <%-include('../partials/footer.html') %>
+    
+</body>
+
+</html>

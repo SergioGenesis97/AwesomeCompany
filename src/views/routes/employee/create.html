@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+
+    <!-- Style Files -->
+    <%-include('../partials/head.html') %>
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <%-include('../partials/navigation.html') %>
+
+    <br>
+    <div class="container">
+        <div class="card border-primary mb-12">
+            <div class="card-header">
+                <h3 class="text-center">Employees Form</h3>
+            </div>
+            <div class="card-body">
+                <form action="/employee/save" method="post">
+                    <div class="form-group col-sm-12">
+                      <label for="full_name">Full Name</label>
+                      <input type="text" name="full_name" class="form-control" id="full_name" placeholder=" Enter Full name" required>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="date_birth">Date Of Birth</label>
+                            <input type="date" name="date_birth" class="form-control" id="date_birth" placeholder="Date of birth" required>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="telephone">Telephone</label>
+                            <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Enter Telephone" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-sm-12">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter E-mail" required>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="salary">Salary</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" name="salary" class="form-control" id="salary" placeholder="Enter Salary" required>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="marital_select">Marital Status</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="marital_select">Options</label>
+                                </div>
+                                <select name="marital_status" class="custom-select col-sm-10" id="marital_select" required>
+                                  <option selected disabled> Choose ... </option>
+                                  <option value="Single" >Single</option>
+                                  <option value="Divorced" >Divorced</option>
+                                  <option value="Married" >Married</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="reset" class="btn btn-danger text-dark">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <%-include('../partials/footer.html') %>
+</body>
+
+</html>
