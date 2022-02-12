@@ -8,8 +8,8 @@ para renderizar las plantillas de html de tal forma que se pueda incrustar códi
 .js dentro del mismo, se añade también el apartado de consultas SQL utilizando
 el driver MSSQL.
 
-Key Words:
-CRUD MSSQL, Insert into NODE.JS, Select * from NODE.JS, Update NODE.JS, Delete NODE.JS
+*Key Words:
+CRUD MSSQL, Insert into NODE.JS, Select * from NODE.JS, Update NODE.JS, Delete NODE.JS*
 
 Enjoy it!
 
