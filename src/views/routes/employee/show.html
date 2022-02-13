@@ -64,14 +64,15 @@
                                     <%= data.recordset[j].marital_status %>
                                 </td>
                                 <td>
-                                    <a href="/employee/edit" class="btn" data-toggle="tooltip" 
+                                    <a  class="btn" data-toggle="tooltip" 
+                                        onclick="UpdateConfirm('<%= data.recordset[j].id_employee %>')"
                                         data-placement="top" title="Edit">
                                         <i class="fas fa-user-edit"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/Employee/<%= data.recordset[j].id_employee %>"
-                                        class="btn" data-toggle="tooltip"
+                                    <a  class="btn" data-toggle="tooltip"
+                                        onclick="DeleteConfirm('<%= data.recordset[j].id_employee %>')"
                                         data-placement="top" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
@@ -87,6 +88,9 @@
 
     <!-- Footer -->
     <%-include('../partials/footer.html') %>
+
+    <!-- Sweet Alerts 2-->
+    <%-include('../partials/sweetAlerts2.html') %>
     
 </body>
 

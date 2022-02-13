@@ -1,0 +1,55 @@
+<!-- ********************** SWEET ALERTS 2 *********************-->
+
+<script>
+
+    // +-------------  DELETE  --------------+
+    function DeleteConfirm(id_employee){
+        Swal.fire({
+            title: 'Are you sure to DELETE?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '../employee/delete'+ id_employee,
+                    
+                    Swal.fire(
+                            'Deleted!',
+                            'Your register has been deleted.',
+                            'success'
+                        )
+                }
+            })
+    };
+
+    // +-------------  UPDATE  --------------+
+    function UpdateConfirm(id_employee){
+        Swal.fire({
+            title: 'Are you sure to UPDATE?',
+            text: "You gonna update this register!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //window.location = '../employee/update'+ id_employee
+                }
+            })
+    };
+
+    // +-------------  SAVE  --------------+
+    function saveInfo(){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your file has been saved',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+</script>

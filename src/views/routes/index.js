@@ -77,7 +77,7 @@ router.post('/employee/save', (req, res) => {
 
  // +-------------------------------------------------------------------+
  //                           DELETE
-router.get('/employee/:id', (req, res) => {
+router.get('/employee/delete:id', (req, res) => {
 
   sql.connect(dbSettings, function(err){
     
@@ -96,7 +96,6 @@ router.get('/employee/:id', (req, res) => {
       }
       sql.close();
       res.redirect('/employee/show');
-
     }); // </ sql.Request >
   }); // </ sql.Connect >
 }); // </ router.get >
