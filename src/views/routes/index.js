@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 import {dbSettings, sql} from "../../database/connection";
+import { body, CustomValidator, validationResult } from "express-validator";
 
  // +----------------------------------------------------------------------+
  //                       INDEX
@@ -41,38 +42,59 @@ router.get('/employee/show', (req, res) => {
 
  // +----------------------------------------------------------------------+
  //                                 CREATE
- router.get('/employee/create', (req, res) => {
+router.get('/employee/create', (req, res) => {
   res.render('create.html', { title: 'Employee' });
 });
 
-router.post('/employee/save', (req, res) => {
+router.post('/employee/save', [
 
-  // Variables with browser info
-  var full_name = req.body.full_name;
-  var date_birth = req.body.date_birth;
-  var telephone = req.body.telephone;
-  var email = req.body.email;
-  var salary = req.body.salary;
-  var marital_status = req.body.marital_status;
+    // Validaciones de variables
+    body('full_name', 'Add your full Name').exists().isLength({min:8}).isAlpha(),
+    body('date_birth', 'Add a Date of birth').exists().toDate(),
+    body('telephone', 'Add a Telephone').exists().isInt(),
+    body('email', 'Add an E-mail').exists().isEmail(),
+    body('salary', 'Enter your Salary').exists().isInt().isNumeric(),
+    body('marital_status', 'Select your Marital status').exists()
+  ], (req, res) => {
 
-  // Connection and query
-  sql.connect(dbSettings, function(err){
-    if(err){
-      console.log("ERROR CONNECTION: ", err);
-    }
-    let sqlRequest = new sql.Request();
-    let sqlInsertInto = `INSERT INTO dbo.employee(full_name, date_birth, telephone, email, salary, marital_status) VALUES ('${full_name}','${date_birth}', '${telephone}','${email}', '${salary}','${marital_status}')`;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
 
-    sqlRequest.query(sqlInsertInto, function(err, data){
-      if(err){
-        console.log("ERROR SQL INSERT: ",err)
-      }
-      sql.close();
-      res.redirect('/employee/show');
+      console.log(req.body);
+      console.log(errors);
+      const valores = req.body;
+      const validaciones = errors.array();
 
-    }); // </ sql.Request >
-  }); // </ sql.Connect >
-}); // </ routes.>
+      res.render('create.html', {validaciones: validaciones, valores: valores, title: 'Employee'});
+
+    } else {
+      // Variables with browser info
+      var full_name = req.body.full_name;
+      var date_birth = req.body.date_birth;
+      var telephone = req.body.telephone;
+      var email = req.body.email;
+      var salary = req.body.salary;
+      var marital_status = req.body.marital_status;
+
+      // Connection and query
+      sql.connect(dbSettings, function(err){
+        if(err){
+          console.log("ERROR CONNECTION: ", err);
+        }
+        let sqlRequest = new sql.Request();
+        let sqlInsertInto = `INSERT INTO dbo.employee(full_name, date_birth, telephone, email, salary, marital_status) VALUES ('${full_name}','${date_birth}', '${telephone}','${email}', '${salary}','${marital_status}')`;
+
+        sqlRequest.query(sqlInsertInto, function(err, data){
+          if(err){
+            console.log("ERROR SQL INSERT: ",err)
+          }
+          sql.close();
+          res.redirect('/employee/show');
+
+        }); // </ sql.Request >
+      }); // </ sql.Connect >
+    } // </ if errors >
+  }); // </ routes.post >
 
 
  // +-------------------------------------------------------------------+
