@@ -29,8 +29,3 @@ Enjoy it!
 [![Employee-Create.jpg](https://i.postimg.cc/hjLT1pG4/Employee-Create.jpg)](https://postimg.cc/wyB165Jn)
 
 ------------------------------------------------------------------------------------------------------
-
-### Show errors form:
-[![Error-message.jpg](https://i.postimg.cc/JnXdWBFh/Error-message.jpg)](https://postimg.cc/xJ0Pvqnr)
-
--------------------------------------------------------------------------------------------------------
