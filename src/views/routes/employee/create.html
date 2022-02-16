@@ -61,12 +61,12 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label for="marital_select">Marital Status</label>
+                            <label for="marital_status">Marital Status</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                <label class="input-group-text" for="marital_select">Options</label>
+                                <label class="input-group-text" for="marital_status">Options</label>
                                 </div>
-                                <select name="marital_status" class="custom-select col-sm-10" id="marital_select">
+                                <select name="marital_status" class="custom-select col-sm-10" id="marital_status">
                                 <option selected disabled> Choose ... </option>
                                 <option value="Single" >Single</option>
                                 <option value="Divorced" >Divorced</option>
@@ -75,22 +75,25 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" onclick="return saveInfo()" class="btn btn-success">Save</button>
                     <button type="reset" class="btn btn-danger text-dark">Cancel</button>
                 </form>
-                <div class="container">
-                    <% if(typeof validaciones != 'undefined') { %>
-                        <br>
-                        <% validaciones.forEach( (validacion)  => { %>
-                            <div class="alert alert-danger alert-dismissible fade show text-dark" role="alert">
-                                <%= validacion.msg %>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <% }); %>
-                    <% }; %>
+            </div>
+        </div> 
+        <% if(typeof validaciones != 'undefined') { %>
+            <div class="card-footer">
+                <br>
+                <div class="col-sm-12 container text-center" style="margin-bottom: 100px;">
+                    <% validaciones.forEach( (validacion)  => { %>
+                        <div class="alert alert-danger alert-dismissible fade show text-dark" role="alert">
+                            <%= validacion.msg %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% }); %>
                 </div>
             </div>
-        </div>
+            <br>
+        <% }; %>
     </div>
 
     <!-- Footer -->

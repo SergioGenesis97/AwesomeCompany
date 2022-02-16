@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 import {dbSettings, sql} from "../../database/connection";
-import { body, CustomValidator, validationResult } from "express-validator";
+import { body, validationResult } from "express-validator";
 
  // +----------------------------------------------------------------------+
  //                       INDEX
@@ -49,23 +49,22 @@ router.get('/employee/create', (req, res) => {
 router.post('/employee/save', [
 
     // Validaciones de variables
-    body('full_name', 'Add your full Name').exists().isLength({min:8}).isAlpha(),
-    body('date_birth', 'Add a Date of birth').exists().toDate(),
+    body('full_name', 'Add your full Name').isAlpha().exists(),
+    body('date_birth', 'Add a Date of birth').isDate().exists(),
     body('telephone', 'Add a Telephone').exists().isInt(),
     body('email', 'Add an E-mail').exists().isEmail(),
-    body('salary', 'Enter your Salary').exists().isInt().isNumeric(),
-    body('marital_status', 'Select your Marital status').exists()
+    body('salary', 'Enter your Salary').exists().isNumeric(),
+    body('marital_status', 'Select your Marital status').isIn(['Single', 'Divorced', 'Married']),
   ], (req, res) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()){
 
       console.log(req.body);
-      console.log(errors);
       const valores = req.body;
       const validaciones = errors.array();
-
       res.render('create.html', {validaciones: validaciones, valores: valores, title: 'Employee'});
+      console.log(validaciones);
 
     } else {
       // Variables with browser info

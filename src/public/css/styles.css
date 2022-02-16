@@ -5,8 +5,8 @@ body{
 }
 
 footer{
-
-    left: 0;
+    position: fixed;
+    left: auto;
     bottom: 0;
     width: 100%;
     margin-top: 43px;
