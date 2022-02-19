@@ -5,23 +5,20 @@ $(document).ready(function(){
 
         var data = {};
         data.full_name = $('input[name=full_name]').val();
-        data.birth_date = $('input[name=birth_date]').val();
+        data.birth_date = $('input[name=date_birth]').val();
         data.telephone = $('input[name=telephone]').val();
         data.email = $('input[name=email]').val(); 
-        data.salary = $('#input[name=salary]').val();
-        data.marital_status = $('input[name=marital_status]').val();
+        data.salary = $('input[name=salary]').val();
+        data.marital_status = $('#marital_status').val();
         
         $.ajax({
             type: 'post',
             url: '/employee/save',
-            data: JSON.stringify(data),
-            dataType: 'json',
-            contentType: "application/json",
+            data: data,
+            dataType: 'text',
             success: () => {
-                alert('Success', JSON.stringify(data));                               
-            },
-            error: (error) => {
-                alert('ERROR AJAX: ', error);
+                alert('Datos Gardados con éxito', data);
+                window.location = '../employee/show';                            
             }
         });
     });

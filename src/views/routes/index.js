@@ -48,18 +48,18 @@ router.get('/employee/create', (req, res) => {
 
 router.post('/employee/save', (req, res) => {
 
-  var reqData = JSON.stringify(req.body.data);
+  var reqData = JSON.parse(JSON.stringify(req.body));
   console.log("Data Post: ", reqData);
 
   // Variables with browser info
-  var full_name = req.body.full_name;
-  var date_birth = req.body.date_birth;
-  var telephone = req.body.telephone;
-  var email = req.body.email;
-  var salary = req.body.salary;
-  var marital_status = req.body.marital_status;
+  var full_name = reqData["full_name"];
+  var date_birth = reqData["birth_date"];
+  var telephone = reqData["telephone"];
+  var email = reqData["email"];
+  var salary = reqData["salary"];
+  var marital_status = reqData["marital_status"];
 
-    /*  // Connection and query
+    // Connection and query
       sql.connect(dbSettings, function(err){
         if(err){
           console.log("ERROR CONNECTION: ", err);
@@ -75,7 +75,7 @@ router.post('/employee/save', (req, res) => {
           res.redirect('/employee/show');
 
         }); // </ sql.Request >
-      }); // </ sql.Connect >*/
+      }); // </ sql.Connect >
   }); // </ routes.post >
 
 
