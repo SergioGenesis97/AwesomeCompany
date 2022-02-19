@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 import {dbSettings, sql} from "../../database/connection";
-import { body, validationResult } from "express-validator";
 
  // +----------------------------------------------------------------------+
  //                       INDEX
@@ -44,38 +43,23 @@ router.get('/employee/show', (req, res) => {
  //                                 CREATE
 router.get('/employee/create', (req, res) => {
   res.render('create.html', { title: 'Employee' });
+  
 });
 
-router.post('/employee/save', [
+router.post('/employee/save', (req, res) => {
 
-    // Validaciones de variables
-    body('full_name', 'Add your full Name').isAlpha().exists(),
-    body('date_birth', 'Add a Date of birth').isDate().exists(),
-    body('telephone', 'Add a Telephone').exists().isInt(),
-    body('email', 'Add an E-mail').exists().isEmail(),
-    body('salary', 'Enter your Salary').exists().isNumeric(),
-    body('marital_status', 'Select your Marital status').isIn(['Single', 'Divorced', 'Married']),
-  ], (req, res) => {
+  var reqData = JSON.stringify(req.body.data);
+  console.log("Data Post: ", reqData);
 
-    const errors = validationResult(req);
-    if (!errors.isEmpty()){
+  // Variables with browser info
+  var full_name = req.body.full_name;
+  var date_birth = req.body.date_birth;
+  var telephone = req.body.telephone;
+  var email = req.body.email;
+  var salary = req.body.salary;
+  var marital_status = req.body.marital_status;
 
-      console.log(req.body);
-      const valores = req.body;
-      const validaciones = errors.array();
-      res.render('create.html', {validaciones: validaciones, valores: valores, title: 'Employee'});
-      console.log(validaciones);
-
-    } else {
-      // Variables with browser info
-      var full_name = req.body.full_name;
-      var date_birth = req.body.date_birth;
-      var telephone = req.body.telephone;
-      var email = req.body.email;
-      var salary = req.body.salary;
-      var marital_status = req.body.marital_status;
-
-      // Connection and query
+    /*  // Connection and query
       sql.connect(dbSettings, function(err){
         if(err){
           console.log("ERROR CONNECTION: ", err);
@@ -91,8 +75,7 @@ router.post('/employee/save', [
           res.redirect('/employee/show');
 
         }); // </ sql.Request >
-      }); // </ sql.Connect >
-    } // </ if errors >
+      }); // </ sql.Connect >*/
   }); // </ routes.post >
 
 

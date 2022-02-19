@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const bodyParser = require('body-parser');
+export const bodyParser = require('body-parser');
 import './database/connection';
+
 
 
 // Settings
@@ -16,14 +17,16 @@ app.set('view engine', 'ejs');
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Routes
 app.use(require('../src/views/routes/index'));
 
 // Statics files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/js')));
 
 // Server listening
 app.listen(app.get('port'), () => {
