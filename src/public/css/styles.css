@@ -13,3 +13,7 @@ body{
     width:100%;
     padding-top: 2em;
 }
+
+.dropdown-item:hover{
+    background-color: rgba(128, 255, 0, 0.227);
+}

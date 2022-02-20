@@ -13,10 +13,17 @@
                     <a class="nav-link" style="color: darkorange;" aria-current="page" href="/"><i
                             class="fas fa-home"></i> Home</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" style="color: chartreuse;" aria-current="page" href="/employee/show"><i
-                            class="far fa-address-card"></i> Employee</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="EmployeeMenu" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="color: chartreuse;">
+                        <i class="far fa-address-card"></i> Employee</a>
+                    </a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="EmployeeMenu">
+                        <li><a data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add"
+                            class="dropdown-item text-white" href="/employee/create"><i class="fas fa-user-plus"></i> Employee</a></li>
+                        <li><a data-bs-toggle="tooltip" data-bs-placement="bottom" title="Show"
+                            class="dropdown-item text-white" href="/employee/show"><i class="far fa-eye"></i> Employee</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
