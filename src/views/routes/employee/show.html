@@ -25,52 +25,52 @@
                 <a href="/employee/create" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Add Employee"><i class="fas fa-plus text-dark"></i></i></a>
             </div>
             <div class="card-body">
-                <table class="table table-striped" id="showRegister">
+                <table class="table table-striped row" id="showRegister">
                     <thead>
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Birth Date</th>
-                        <th scope="col">Telephone</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Salary</th>
-                        <th scope="col">Marital Status</th>
-                        <th scope="col"><i class="far fa-edit"></i></th>
-                        <th scope="col"><i class="fas fa-ban"></i></th>
+                        <th class="col-" scope="col">ID</th>
+                        <th class="col-3" scope="col">Full Name</th>
+                        <th class="col-2" scope="col">Birth Date</th>
+                        <th class="col-2" scope="col">Telephone</th>
+                        <th class="col-2" scope="col">E-mail</th>
+                        <th class="col-" scope="col">Salary</th>
+                        <th class="col-2" scope="col">Marital Status</th>
+                        <th scope="col"><i class="far fa-edit col-"></i></th>
+                        <th scope="col"><i class="fas fa-ban col-"></i></th>
                       </tr>
                     </thead>
                     <tbody>
                         <% for (let j = 0; j < data.recordset.length; j++) {%>
                             <tr>
-                                <td>
+                                <td class="col-">
                                     <%= data.recordset[j].id_employee %>
                                 </td>
-                                <td>
+                                <td class="col-3">
                                     <%= data.recordset[j].full_name %>
                                 </td>
-                                <td>
+                                <td class="col-2">
                                     <%= data.recordset[j].date_birth.toDateString() %>
                                 </td>
-                                <td>
+                                <td class="col-2">
                                     <%= data.recordset[j].telephone %>
                                 </td>
-                                <td>
+                                <td class="col-2">
                                     <%= data.recordset[j].email %>
                                 </td>
-                                <td>
+                                <td class="col-">
                                     <%= data.recordset[j].salary %>
                                 </td>
-                                <td>
+                                <td class="col-2">
                                     <%= data.recordset[j].marital_status %>
                                 </td>
-                                <td>
+                                <td class="col-">
                                     <a  class="btn" data-toggle="tooltip" 
                                         onclick="UpdateConfirm('<%= data.recordset[j].id_employee %>')"
                                         data-placement="top" title="Edit">
                                         <i class="fas fa-user-edit"></i>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="col-">
                                     <a  class="btn" data-toggle="tooltip"
                                         onclick="DeleteConfirm('<%= data.recordset[j].id_employee %>')"
                                         data-placement="top" title="Delete">
@@ -85,8 +85,7 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
+    
     <!-- Footer -->
     <%-include('../partials/footer.html') %>
 
