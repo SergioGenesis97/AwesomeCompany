@@ -8,7 +8,8 @@ import './database/connection';
 
 // Settings
 app.set('port', 3000);
-app.set('views', [path.join(__dirname, 'views'),
+app.set('views', [path.join(__dirname, 'public'),
+                  path.join(__dirname, 'public/html'),
                   path.join(__dirname, 'views/routes'),
                   path.join(__dirname, 'views/routes/employee'),
                   path.join(__dirname, 'views/partials')]);

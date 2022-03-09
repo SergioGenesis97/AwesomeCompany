@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
  //  ********************   EMPLOYEE   ***************************
  // +----------------------------------------------------------------------+
  //                         SHOW
-router.get('../../../public/html/employee/show.html', (req, res) => {
+router.get('/employee/show', (req, res) => {
   sql.connect(dbSettings, function(err){
     if(err){
       console.log("ERROR CONNECT: ", err);
@@ -30,7 +30,7 @@ router.get('../../../public/html/employee/show.html', (req, res) => {
       if(err){
         console.log("ERROR SQL SHOW: ", err);
       } else {
-          res.render('show.html', { title: 'Employee', data: data});
+          res.render('../../../public/html/employee/show.html', { title: 'Employee', data: data});
           sql.close();
       }
       
@@ -41,8 +41,8 @@ router.get('../../../public/html/employee/show.html', (req, res) => {
 
  // +----------------------------------------------------------------------+
  //                                 CREATE
-router.get('../../../public/html/employee/create.html', (req, res) => {
-  res.render('create.html', { title: 'Employee' });
+router.get('/employee/create', (req, res) => {
+  res.render('../../../public/html/employee/create.html', { title: 'Employee' });
   
 });
 

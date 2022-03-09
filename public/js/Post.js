@@ -18,7 +18,7 @@ $(document).ready(function(){
             dataType: 'text',
             success: () => {
                 alert('Datos Gardados con éxito', data);
-                window.location = '../employee/show';                            
+                window.location = '../../public/html/employee/show.html';                            
             }
         });
     });
