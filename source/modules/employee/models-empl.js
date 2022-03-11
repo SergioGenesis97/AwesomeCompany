@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-import {dbSettings, sql} from "../../database/connection";
+import {dbSettings, sql} from "../../../source/infra/db/connection";
 
  // +----------------------------------------------------------------------+
  //                       INDEX
@@ -30,7 +30,7 @@ router.get('/employee/show', (req, res) => {
       if(err){
         console.log("ERROR SQL SHOW: ", err);
       } else {
-          res.render('show.html', { title: 'Employee', data: data});
+          res.render('../../../public/html/employee/show.html', { title: 'Employee', data: data});
           sql.close();
       }
       
@@ -42,7 +42,7 @@ router.get('/employee/show', (req, res) => {
  // +----------------------------------------------------------------------+
  //                                 CREATE
 router.get('/employee/create', (req, res) => {
-  res.render('create.html', { title: 'Employee' });
+  res.render('../../../public/html/employee/create.html', { title: 'Employee' });
   
 });
 
@@ -72,7 +72,7 @@ router.post('/employee/save', (req, res) => {
             console.log("ERROR SQL INSERT: ",err)
           }
           sql.close();
-          res.redirect('/employee/show');
+          res.redirect('../../../public/html/employee/show.html');
 
         }); // </ sql.Request >
       }); // </ sql.Connect >
@@ -99,7 +99,7 @@ router.get('/employee/delete:id', (req, res) => {
         console.log("ERROR QUERY DELETE: ", err);
       }
       sql.close();
-      res.redirect('/employee/show');
+      res.redirect('../../../public/html/employee/show.html');
     }); // </ sql.Request >
   }); // </ sql.Connect >
 }); // </ router.get >
