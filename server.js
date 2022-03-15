@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-import './database/connection';
+require('./source/infra/db/connection');
 const { auth } = require('express-openid-connect');
 require('dotenv').config();
 
@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(auth(config));
 
 // Routes
-app.use(require('../src/views/routes/index'));
+app.use(require('./source/modules/employee/models-empl'));
 
 // Statics files
 app.use(express.static(path.join(__dirname, 'public')));

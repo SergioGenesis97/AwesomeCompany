@@ -1,7 +1,7 @@
 
-export const sql = require('mssql');
+const sql = require('mssql');
 
-export const dbSettings = {
+const dbSettings = {
   user: 'sa',
   password: '3335',
   database: 'AwesomeCompany',
@@ -18,3 +18,5 @@ export const dbSettings = {
     trustServerCertificate: true
   }
 }
+
+module.exports = {sql, dbSettings};

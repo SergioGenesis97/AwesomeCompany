@@ -3,14 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-import {dbSettings, sql} from "../../database/connection";
+const {sql, dbSettings} = require('../../infra/db/connection');
 
  // +----------------------------------------------------------------------+
  //                       INDEX
 router.get('/', (req, res) => {
 
   console.log(req.oidc.isAuthenticated());
-  res.render('index.html', { title: 'Index' });
+  res.render('../../../public/html/index.html', { title: 'Index' });
     
 });
 
