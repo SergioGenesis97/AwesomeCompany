@@ -18,10 +18,11 @@ const config = {
 
 // Settings
 app.set('port', 3000);
-app.set('views', [path.join(__dirname, 'views'),
-                  path.join(__dirname, 'views/routes'),
-                  path.join(__dirname, 'views/routes/employee'),
-                  path.join(__dirname, 'views/partials')]);
+app.set('views', [path.join(__dirname, 'public'),
+                  path.join(__dirname, 'public/html'),
+                  path.join(__dirname, 'public/html/employee'),
+                  path.join(__dirname, 'public/html/partials'),
+                  path.join(__dirname, 'public/js')]);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 

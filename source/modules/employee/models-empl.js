@@ -73,7 +73,7 @@ router.post('/employee/save', (req, res) => {
             console.log("ERROR SQL INSERT: ",err)
           }
           sql.close();
-          res.redirect('../../../public/html/employee/show.html');
+          res.redirect('/employee/show');
 
         }); // </ sql.Request >
       }); // </ sql.Connect >
@@ -100,7 +100,7 @@ router.get('/employee/delete:id', (req, res) => {
         console.log("ERROR QUERY DELETE: ", err);
       }
       sql.close();
-      res.redirect('../../../public/html/employee/show.html');
+      res.redirect('/employee/show');
     }); // </ sql.Request >
   }); // </ sql.Connect >
 }); // </ router.get >
